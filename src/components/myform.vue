@@ -30,6 +30,7 @@
 
 
 <script>
+// todo - modify form with netlify tags, modify to correspond to mail.js function
 import { ValidationObserver } from 'vee-validate'
 import VTextFieldWithValidation from './inputs/VTextFieldWithValidation'
 import VSelectWithValidation from './inputs/VSelectWithValidation'
