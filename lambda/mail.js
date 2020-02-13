@@ -1,9 +1,10 @@
-// TODO modify this with a real email service - add to gitignore for security - adapt fields to match form
 
-const postmark = require("postmark"); // require mail service, postmark in this case
+const dotenv = require('dotenv') // require the .env file for api key etc
+dotenv.config()
+const postmark = require("postmark"); // require mail service
 
-const client = new postmark.Client("XXXXXXXXXXXXXXXXXXXXXXXXXXXX"); // your postmark api key
-
+const client = new postmark.ServerClient( process.env.POSTMARK_API_KEY ) // your postmark api key in a .env file
+const fromEmail = process.env.POSTMARK_FROM_EMAIL // the from and to email is the same in this example 
 const headers = {
     "Access-Control-Allow-Origin": "*", // better change this for production
     "Access-Control-Allow-Methods": "POST",
@@ -27,8 +28,9 @@ exports.handler = function (event, context, callback) {
     // validate the form
     if (
         !payload.name ||
-        !payload.subject ||
+        !payload.phone ||
         !payload.email ||
+        !payload.checkbox ||
         !payload.message
     ) {
         return callback(null, {
@@ -42,15 +44,21 @@ exports.handler = function (event, context, callback) {
 
     // finally everything is fine and we can send the mail
     return client.sendEmail({
-        "From": "my@email.com",
-        "To": "my@email.com",
+        "From": fromEmail,
+        "To": fromEmail,
         "ReplyTo": payload.email,
-        "Subject": `${payload.subject}`,
+        "Subject": `Contact Form Submitted by ${payload.name} `,
         "TextBody": `
-      Hey,
+      Hey Phil,
 
       ${payload.name} sent a new message from your website!
 
+      Phone: ${payload.phone}
+
+      Email: ${payload.email}
+
+      Message: 
+      
       ${payload.message}
 
       Cheers, your webserver!
@@ -70,7 +78,7 @@ exports.handler = function (event, context, callback) {
             statusCode: 200,
             headers,
             body: JSON.stringify({
-                message: "Message sent successfully!",
+                message: "Thank you for your message!",
             }),
         });
     });
