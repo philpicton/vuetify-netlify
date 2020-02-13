@@ -1,15 +1,14 @@
 <template>
     <ValidationProvider :name="$attrs.label" :rules="rules" v-slot="{ errors, valid }">
-        <v-checkbox
-        v-bind="$attrs" 
-        v-on="$listeners"
-        v-model="innerValue"
-        :error-messages="errors"
-        value="1"
-        type="checkbox"
-        required
-        :success="valid"
-        ></v-checkbox>
+        <v-textarea
+          v-model="innerValue"
+          v-bind="$attrs" 
+          v-on="$listeners"
+          :error-messages="errors"
+          :success="valid"
+          required
+          rows="4"
+        ></v-textarea>
     </ValidationProvider>
 </template>
 
