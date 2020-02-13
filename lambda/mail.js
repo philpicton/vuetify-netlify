@@ -1,5 +1,5 @@
 
-const dotenv = require('dotenv') // require the .env file for api key etc
+const dotenv = require('dotenv') // require the .env file for api key etc (on netlify set the env variables in the UI)
 dotenv.config()
 const postmark = require("postmark"); // require mail service
 
