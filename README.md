@@ -1,4 +1,4 @@
-# droplet2
+# Vuetify-Netlify
 
 > SPA Project template using Vue.js, Vuetify and Lambda functions deployable on Netlify
 
@@ -28,4 +28,4 @@ yarn lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Deploying to netlify
-You'll need to set the environment variables in the netlify UI for your email provider (see mail.js)
+You'll need to set the environment variables in the netlify UI for your email provider (see lambda/mail.js)
