@@ -2,7 +2,7 @@
 
 > SPA Project template using Vue.js, Vuetify and Lambda functions deployable on Netlify
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/ad8acc59-dcc5-4b2f-a63e-01eba6425dbd/deploy-status)](https://app.netlify.com/sites/droplet-media/deploys)
+NB. This is very out of date so I'm archiving it.
 
 ## Project setup
 ```
